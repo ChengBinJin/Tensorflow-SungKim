@@ -1,5 +1,6 @@
 import tensorflow as tf
-filename_queue = tf.train.string_input_producer(['data-01-test-score.csv'], shuffle=False, name='filename_queue')
+filename_queue = tf.train.string_input_producer(['../data/data-01-test-score.csv'],
+                                                shuffle=False, name='filename_queue')
 
 reader = tf.TextLineReader()
 key, value = reader.read(filename_queue)
@@ -33,8 +34,6 @@ sess = tf.Session()
 # Initializes global variables in the graph.
 sess.run(tf.global_variables_initializer())
 
-print('hello world before!')
-
 # Start populating the filename queue.
 coord = tf.train.Coordinator()
 threads = tf.train.start_queue_runners(sess=sess, coord=coord)
@@ -48,8 +47,6 @@ for step in range(2001):
 
 coord.request_stop()
 coord.join(threads)
-
-print('hello world after!')
 
 # Ask my score
 print("Your score will be: ", sess.run(hypothesis, feed_dict={X: [[100, 70, 101]]}))
