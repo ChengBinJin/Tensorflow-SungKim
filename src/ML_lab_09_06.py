@@ -169,9 +169,9 @@ class Solver:
             self.model.mode: True
         }
         train_op = self.model.train_op
-        loss = self.model.loss
+        loss_ = self.model.loss
 
-        return self.sess.run([train_op, loss], feed_dict=feed)
+        return self.sess.run([train_op, loss_], feed_dict=feed)
 
     def evaluate(self, X, y, batch_size_=None):
         if batch_size_:
@@ -190,10 +190,10 @@ class Solver:
                     self.model.mode: False
                 }
 
-                loss = self.model.loss
+                loss_ = self.model.loss
                 accuracy = self.model.accuracy
 
-                step_loss, step_acc = self.sess.run([loss, accuracy], feed_dict=feed)
+                step_loss, step_acc = self.sess.run([loss_, accuracy], feed_dict=feed)
 
                 total_loss += step_loss * X_batch_.shape[0]
                 total_acc += step_acc * X_batch_.shape[0]
@@ -210,10 +210,10 @@ class Solver:
                 self.model.mode: False
             }
 
-            loss = self.model.loss
+            loss_ = self.model.loss
             accuracy = self.model.accuracy
 
-            return self.sess.run([loss, accuracy], feed_dict=feed)
+            return self.sess.run([loss_, accuracy], feed_dict=feed)
 
 mnist = input_data.read_data_sets('../data/MNIST_data', one_hot=True)
 print(mnist.train.images.shape)
