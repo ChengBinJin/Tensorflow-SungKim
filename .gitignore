@@ -1,3 +1,5 @@
 src/.idea
 data/MNIST_data/
 src/logs
+src/__pycache__
+data/cifar10/
