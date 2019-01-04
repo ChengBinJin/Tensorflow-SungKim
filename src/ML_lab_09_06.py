@@ -40,7 +40,7 @@ class Model:
 
     mode: tf.bool
         This is used for the batch normalization
-        It's 'True' at training time and 'Falase' at test time
+        It's 'True' at training time and 'False' at test time
 
     loss: tf.float32
         The loss function is a softmax cross entropy
@@ -53,7 +53,7 @@ class Model:
 
     Examples
     ---------------
-    # >>> model = Model("Batch Norm", 32, 10
+    # >>> model = Model("Batch Norm", 32, 10)
 
     """
     def __init__(self, name, input_dim, output_dim, hidden_dims=[32, 32], use_batchnorm=True, activation_fn=tf.nn.relu,
@@ -70,7 +70,7 @@ class Model:
             In this example, 784
 
         output_dim: int
-            The number of outptu labels
+            The number of output labels
             There are 10 labels
 
         hidden_dims: list (default: [32, 32])
@@ -144,7 +144,7 @@ class Solver:
     evaluate(X, y, batch_size=None)
         Returns "Loss" and "Accuracy"
         If batch_size is given, it's computed using batch_size
-        because modt GPU memories cannot handle the entire training data at once
+        because GPU memories cannot handle the entire training data at once
 
     Example
     ----------
@@ -259,16 +259,16 @@ for epoch in range(epoch_n):
     b_loss, b_acc = bn_solver.evaluate(mnist.train.images, mnist.train.labels, batch_size)
     n_loss, n_acc = nn_solver.evaluate(mnist.train.images, mnist.train.labels, batch_size)
 
-    # Save train losses/acc
+    # Save train losses/accs
     train_losses.append([b_loss, n_loss])
     train_accs.append([b_acc, n_acc])
-    print('[Epoch {}-TRAIN] Batchnorm Loss(Acc): {:.5f}({:.2}%) vs '
-          'No Batchnorm Loss(Acc): {:.5f}({:.2}%)'.format(epoch, b_loss, b_acc, n_loss, n_acc))
+    print('[Epoch {}-TRAIN] Batchnorm Loss(Acc): {:.5f}({:.2f}%) vs '
+          'No Batchnorm Loss(Acc): {:.5f}({:.2f}%)'.format(epoch, b_loss, b_acc, n_loss, n_acc))
 
     b_loss, b_acc = bn_solver.evaluate(mnist.validation.images, mnist.validation.labels)
     n_loss, n_acc = nn_solver.evaluate(mnist.validation.images, mnist.validation.labels)
 
-    # save valid losses/acc
+    # save valid losses/accs
     valid_losses.append([b_loss, n_loss])
     valid_accs.append([b_acc, n_acc])
     print('[Epoch {}-VALID] Batchnorm Loss(Acc): {:.5f}({:.2f}%) vs '
