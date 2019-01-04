@@ -282,8 +282,8 @@ dataset = Cifar10()
 bn = Model('batchnorm', input_dim, output_dim, use_batchnorm=True)
 bn_solver = Solver(sess, bn)
 
-epoch_n = 20
-batch_size = 100
+epoch_n = 80
+batch_size = 200
 
 # Save losses and Accuracies every epoch
 train_losses = []
