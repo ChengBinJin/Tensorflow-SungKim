@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
-sentence = ("if you want to build a ship, don't drum up people togehter to "
+sentence = ("if you want to build a ship, don't drum up people togother to "
             "collect wood and don't assign them tasks and work, but rather "
             "teach them to long for the endless immensity of the sea.")
 
