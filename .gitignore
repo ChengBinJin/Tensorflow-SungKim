@@ -1,4 +1,5 @@
 src/.idea
+src/.DS_Store
 data/MNIST_data/
 src/logs
 src/__pycache__
